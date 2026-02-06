@@ -1,0 +1,33 @@
+#!/bin/bash
+
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+PROG_DIR ="$BASE_DIR/progams"
+BUILD_DIR="$BASE_DIR/build"
+
+case "$1" in 
+    list)
+        echo "Available C programs:"
+        ls "$PROG_DIR" | sed 's/\.c$//'
+        ;;
+    show)
+        if [ -f "$PROG_DIR/$2.c" ]; then
+            cat "$PROG_DIR/$2.c"
+        else
+            echo "Program '$2' not found."
+        fi
+        ;;
+    run)
+        if [ -f "$PROG_DIR/$2.c" ]; then
+           gcc "$PROG_DIR/$2.c" -o "$BUILD_DIR/$2"
+           "$BUILD_DIR/$2"
+        else
+            echo "Program '$2' not found."
+        fi
+        ;;
+    *)
+        echo "Usage:"
+        echo "  dipan list           - List available C programs"
+        echo "  dipan show <program> - Show the source code of a program"
+        echo "  dipan run <program>  - Compile and run a program"
+        ;;  
+esac    
