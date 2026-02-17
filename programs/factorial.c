@@ -1,15 +1,18 @@
-//This program is written to multiple two numbers using recursion not using * sign.
-#include <stdio.h>
+//This program is written to multiple two numbers using recursion not using function
+#include<stdio.h>
+int factorial(long long num){
+    if(num == 0 || num == 1) return 1;  
+    else return num * factorial(num - 1);  
+}
+
 int main(){
-    int add(int a, int b){
-        if (b == 0)
-            return a;
-        return add(a + 1, b - 1);
+    long long number;
+    printf("Enter a number to find its factorial: ");
+    scanf("%lld", &number);
+    if(number < 0){
+        printf("Factorial is not defined for negative numbers.\n");
+    } else {
+        printf("Factorial of %lld is %lld\n", number, factorial(number));
     }
-    int num1, num2;
-    printf("Enter two numbers: ");
-    scanf("%d %d", &num1, &num2);
-    int sum = add(num1, num2);
-    printf("Sum: %d\n", sum);
     return 0;
 }

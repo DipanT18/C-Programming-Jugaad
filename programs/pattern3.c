@@ -1,0 +1,16 @@
+#include<stdio.h>
+//Middle to full pattern
+int main(){
+    for(int i=1;i<=5;i++){
+        for(int j=1;j<=i;j++){
+            printf("* ");
+        }
+        printf("\n");
+    }
+    for(int i=1;i<=5;i++){
+        for(int j=5;j>=i;j--){
+            printf("* ");
+        }
+        printf("\n");
+    }
+}
